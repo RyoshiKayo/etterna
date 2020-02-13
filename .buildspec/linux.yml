@@ -46,7 +46,7 @@ phases:
     commands:
       - > # Package up all we need for a portable zip.
         cd $CODEBUILD_SRC_DIR && zip -r
-        Etterna-Linux_$CODEBUILD_RESOLVED_SOURCE_VERSION_$CODEBUILD_SOURCE_VERSION.zip
+        Etterna-Linux_commit-$CODEBUILD_RESOLVED_SOURCE_VERSION.zip
         portable.ini
         Etterna
         Announcers/*
@@ -67,6 +67,6 @@ phases:
         CHANGELOG.md
         .changelog/*
       - > # Copy the portable zip to S3.
-        aws s3 sync
-        $CODEBUILD_SRC_DIR/Etterna-Linux_$CODEBUILD_RESOLVED_SOURCE_VERSION_$CODEBUILD_SOURCE_VERSION.zip
+        aws s3 cp
+        $CODEBUILD_SRC_DIR/Etterna-Linux_commit-$CODEBUILD_RESOLVED_SOURCE_VERSION.zip
         $S3_BUILD_BUCKET
