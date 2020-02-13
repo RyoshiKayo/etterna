@@ -45,7 +45,7 @@ phases:
   post_build:
     commands:
       - > # Package up all we need for a portable zip.
-        cd CODEBUILD_SRC_DIR && zip -r
+        cd $CODEBUILD_SRC_DIR && zip -r
         Etterna-Linux_$CODEBUILD_RESOLVED_SOURCE_VERSION_$CODEBUILD_SOURCE_VERSION.zip
         portable.ini
         Etterna
