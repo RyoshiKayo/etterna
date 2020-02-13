@@ -3,34 +3,32 @@ version: 0.1
 phases:
   install:
     command:
-      - "Nothing to do in 'install' phase..."
+      - apt-get update && apt-get upgrade -y
+      - apt-get install -y
+          nasm
+          libudev-dev
+          gcc-5
+          g++-5
+          libmad0-dev
+          libgtk2.0-dev
+          binutils-dev
+          libasound-dev
+          libpulse-dev
+          libjack-dev
+          libc6-dev
+          libogg-dev
+          libvorbis-dev
+          libxtst-dev
+          libxrandr-dev
+          libglew-dev
+          libuv-dev
+          clang-format-5.0
+          libcurl4-openssl-dev
   pre_build:
     command:
-      - "Nothing to di in 'pre_build' phase..."
-  build:
-    commands:
-      - apt-get update && apt-get upgrade -y
-      - apt-get install -y \
-          nasm \
-          libudev-dev \
-          gcc-5 \
-          g++-5 \
-          libmad0-dev \
-          libgtk2.0-dev \
-          binutils-dev \
-          libasound-dev \
-          libpulse-dev \
-          libjack-dev \
-          libc6-dev \
-          libogg-dev \
-          libvorbis-dev \
-          libxtst-dev \
-          libxrandr-dev \
-          libglew-dev \
-          libuv-dev \
-          clang-format-5.0 \
-          libcurl4-openssl-dev
       - mkdir -p $CODEBUILD_SRC_DIR/build
       - cd $CODEBUILD_SRC_DIR/build
       - cmake ..
+  build:
+    commands:
       - make -j 4
