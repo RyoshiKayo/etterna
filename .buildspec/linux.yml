@@ -25,6 +25,7 @@ phases:
         libuv-dev
         clang-format-5.0
         libcurl4-openssl-dev
+      - sh $CODEBUILD_SRC_DIR/.ci/build.sh
   pre_build:
     commands:
       - mkdir -p $CODEBUILD_SRC_DIR/build
