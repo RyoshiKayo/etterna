@@ -2,7 +2,7 @@ version: 0.2
 
 phases:
   install:
-    command:
+    commands:
       - apt-get update && apt-get upgrade -y
       - >
         apt-get install -y
@@ -26,7 +26,7 @@ phases:
         clang-format-5.0
         libcurl4-openssl-dev
   pre_build:
-    command:
+    commands:
       - mkdir -p $CODEBUILD_SRC_DIR/build
       - cd $CODEBUILD_SRC_DIR/build
       - cmake ..
